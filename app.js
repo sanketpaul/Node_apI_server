@@ -44,7 +44,7 @@ app.get('/categories', (req, res) => {
 
 // Products wrt categoryid
 app.get('/products', (req, res) => {
-    query = {}
+    let query = {}
     categoryId = Number(req.query.categoryId);
 
     if (categoryId) {
