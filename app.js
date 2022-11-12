@@ -42,6 +42,21 @@ app.get('/categories', (req, res) => {
     })
 })
 
+// subcategory with respect to category
+
+app.get('/subcategory',(req,res)=>{
+    let query={}
+    categoryId=Number(req.query.categoryId)
+    if(categoryId){
+        query={category_id:categoryId}
+    }
+    db.collection('subcategory').find(query).toArray((err,result)=>{
+        if(err) throw err;
+        res.send(result)
+        console.log(result)
+    })
+})
+
 // Products wrt categoryid
 app.get('/products', (req, res) => {
     let query = {}
