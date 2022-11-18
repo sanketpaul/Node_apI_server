@@ -155,17 +155,12 @@ app.get('/orders', (req, res) => {
 })
 
 // Post requesst
-app.post('/items', (req, res) => {
-    if (Array.isArray(req.body.productId)) {
-        db.collection('products').find({ product_id: { $in: req.body.productId } }).toArray((err, result) => {
-            if (err) throw err
-            res.send(result)
-
-        })
-    }
-    else {
-        res.send("invalid input")
-    }
+app.post('/productItem',(req,res) => {
+    console.log(req.body)
+    db.collection('products').find({product_id:{$in:req.body}}).toArray((err,result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
 })
 
 // Place order
